@@ -82,10 +82,25 @@ export default function FormPropsTextFields() {
 
       console.log('final info to submit:', searchInfo)
 
-      let response = await axios.get(`/recipe/search/${searchInfo.search}`)
      
      
-      setReturnRecipes(await formatRecipe(response.data))
+      try{
+      let data = await axios.get(`/recipe/search/${searchInfo.search}`)
+        //let data = await axios.post('users/api/login', loginObject)
+      //console.log(res)
+    
+        // if(data.status === 200) {
+        //    alert('Login Successful')
+         
+        //  }
+          setReturnRecipes(await formatRecipe(data.data))
+        }catch(error){
+         
+           alert('Recipe Not Found')
+          
+    
+        }
+     
        
       
     }

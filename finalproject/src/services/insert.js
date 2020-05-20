@@ -7,21 +7,13 @@ const baseUrl = '/api/insert'
 const insert = (insertObject) => {
   axios.post(baseUrl, insertObject)
   .then(response => {
-   if(response.status === 204) {
-      alert('Insert Failed')
+   if(response.status === 200) {
+      alert('Account Created')
     
-    } 
-    // else {
-    //   localStorage.setItem('username', insertObject.username)
-    //   userStore.dispatch({
-    //     type: 'LOGIN_USER',
-    //     data: {
-    //       username: insertObject.username,
-    //       loggedIn: true
-    //     }
-    //   })
-      
-    // }
+    } else if(response.status === 500) {
+      alert('Creation Failed')
+    }
+    
   })
   .catch(error => {
     console.log(error)

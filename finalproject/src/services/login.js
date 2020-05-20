@@ -2,22 +2,37 @@ import axios from 'axios'
 
 
 
-const login = (loginObject) => {
-  axios.post('users/api/login', loginObject)
-  .then(response => {
-   if(response.status === 204) {
-      alert('User not found please register')
-    } 
+const login = async (loginObject) => {
+  // axios.post('users/api/login', loginObject)
+  // .then(response => {
+  //  if(response.status === 200) {
+  //     alert('User Login Successfull')
+  //   } 
 
-    if(response.status === 200)
-    {
-      alert("User Login Successful")
+  
+  // })
+  // .catch(error => {
+  //   console.log(error)
+  //   alert("User Login Successful")
+  // })
+  
+  try{
+
+    let data = await axios.post('users/api/login', loginObject)
+  //console.log('thisis the data', data.status)
+
+    if(data.status === 200) {
+       alert('Login Successful')
+     
+     }
+    }catch(error){
+     
+       alert('Login Failed')
+      
+
     }
-    
-  })
-  .catch(error => {
-    console.log(error)
-  })
 }
+
+
 
 export default {login}

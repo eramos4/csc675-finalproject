@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import registerServices from '../services/register'
+import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,13 +23,27 @@ export default function FormPropsTextFields() {
         registerObject[event.target.name] = event.target.value; 
     }
 
-    const submitHandler = (event) =>{
+    const submitHandler = async (event) =>{
       event.preventDefault();
       console.log('event submitted');
 
       console.log('final info to submit:', registerObject)
 
-      registerServices.register(registerObject)
+      try{
+
+        let data = await axios.post('users/api/register', registerObject)
+      //console.log('thisis the data', data.status)
+
+        if(data.status === 200) {
+           alert('Account Created')
+         
+         }
+        }catch(error){
+         
+           alert('Creation Failed')
+          
+
+        }
     }
   
     return (
