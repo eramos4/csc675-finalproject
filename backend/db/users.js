@@ -1,5 +1,5 @@
 const connection = require('./mysql.js');
-const bcrypt = require('bcrypt');
+
 const uuidv4 = require('uuid').v4
 
 
@@ -38,8 +38,7 @@ class Users{
         console.log(`this is the stuff: ${email_address}, ${password}, ${username}`)
         return new Promise((resolve, reject) => {
             
-            bcrypt.hash(password, 5, function(err, hash) {
-
+            
 
 
                 connection.query('INSERT INTO cookit_db.users(email_address, uuid, password, username, is_admin) VALUES(?,?,?,?,?)', [email_address, uuidv4(), password, username, false])
@@ -55,7 +54,7 @@ class Users{
                     reject('Error in user create')
                 });
 
-            });
+           
         });
 
     }
