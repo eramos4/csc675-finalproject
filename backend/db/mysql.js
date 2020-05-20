@@ -14,16 +14,17 @@
 const mysqldb = require('mysql-promise')();
 
 mysqldb.configure({
-	"host": "localhost",
-	"user": "root",
-	"password": "password",
-	"database": "cookit_db"
+	"host": "cookit-db.c3hss1tdyxra.us-west-1.rds.amazonaws.com",
+	"user": "admin",
+	"password": "Edward12!",
+	"database": 'cookit_db'
 });
 
-// connection.query('select * from users', []).then(function (data) {
+
+// mysqldb.query('select * from users', []).then(function (data) {
 // 	console.log('this works?: ' , data);
 //     }).catch((error) =>{
-//         console.log(error);f
+//         console.log(error);
 //     });
 
  
