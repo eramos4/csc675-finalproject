@@ -1,12 +1,12 @@
 # csc675-finalproject
 
-How to run backend with react build:
+How to run Project:
 
 cd into Backend directory
 
-To run backend: npm run start:backend
+To run app: npm run start:backend
 
-runs on port: 4000
+Go to port: 4000
 
 
 How to run frontend alone:
